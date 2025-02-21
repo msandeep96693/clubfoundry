@@ -2,6 +2,7 @@ package PageObject;
 
 import java.util.List;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -118,20 +119,26 @@ public class Createincentivepage {
 				 clickonminiclubdropdown.click();
 				 for(WebElement miniclubdropdownoption : miniclubdropdownoptionlist)
 				 {
-					 Thread.sleep(1000);
-					 String minicluboptionnamelist = miniclubdropdownoption.getText();
-					 if(minicluboptionnamelist.equalsIgnoreCase(optionname))
-					 {
-						 miniclubdropdownoption.click();
-					 }
+					 try {
+						 String minicluboptionnamelist = miniclubdropdownoption.getText();
+						 System.out.println("List of mini club Names :- "+minicluboptionnamelist);
+						 if(minicluboptionnamelist.equalsIgnoreCase(optionname))
+						 {
+							 miniclubdropdownoption.click();
+						 }
+					} catch (StaleElementReferenceException e) {
+						String minicluboptionnamelist = miniclubdropdownoption.getText();
+						System.out.println("List of mini club Names :- "+minicluboptionnamelist);
+					}
 				 }
 			 } else 
 			 {
 				 clickoncountrydropdown.click();
 				 for(WebElement countrydropdownoption : countrycurrencydropdownlist)
 				 {
-					 String minicluboptionnamelist = countrydropdownoption.getText();
-					 if(minicluboptionnamelist.equalsIgnoreCase(optionname))
+					 String countryoptionnamelist = countrydropdownoption.getText();
+					 System.out.println("List of country name :- "+countryoptionnamelist);
+					 if(countryoptionnamelist.equalsIgnoreCase(optionname))
 					 {
 						 countrydropdownoption.click();
 					 }
