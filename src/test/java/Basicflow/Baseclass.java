@@ -10,6 +10,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import PageObject.Createincentivepage;
 import PageObject.Signinpage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,6 +18,8 @@ import io.cucumber.java.Before;
 public class Baseclass {
 	
 	public static WebDriver driver;
+	public Signinpage signin;
+	public Createincentivepage createincentive;
 	
 //	@Before
 	public void InitialiseBrowser(String BrowserName) {

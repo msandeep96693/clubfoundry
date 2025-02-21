@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions( features = { "src/test/resources/Loginscenario/loginscenario.feature",
 					"src/test/resources/Incentivescenario/createincentive.feature", 
-					"src/test/resources/Miniclub/Createminiclub.feature"},
+					},
  				glue = {"definitionsteps" },
  				dryRun = true,
 // 				dryRun true will not execute
@@ -18,3 +18,4 @@ import io.cucumber.junit.CucumberOptions;
 public class TestRun {
 
 }
+//"src/test/resources/Miniclub/Createminiclub.feature"

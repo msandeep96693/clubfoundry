@@ -8,9 +8,6 @@ import io.cucumber.java.en.*;
 
 public class Stepsignin extends Baseclass {
 	
-	
-	Signinpage signin;
-
 	@Given("user should navigate to the login page")
 	public void user_should_navigate_to_the_login_page() {
 		InitialiseBrowser("chrome");

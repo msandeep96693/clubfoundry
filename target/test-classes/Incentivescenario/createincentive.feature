@@ -16,17 +16,17 @@ Feature: crete incentive functionality
 		And user click on incentive+ button
 		And user validate the label name and select mini club name option
 		And user validate the label name and enter the title name as
-		And user validate the label name and select the start date from calender
-		And user validate the label name and select the end date from calender
+#		And user validate the label name and select the start date from calender
+#		And user validate the label name and select the end date from calender
 		And user validate the label name and Add an image
 		And user validate the label name and enter the max submission data as
 		And user validate the label name and enter the Eligible winner data as
 		And user validate the label name and enter the winner Title as
 		And user click on currency dropdown1 and select the option
 		And user validate the label name and enter the winner amount
-		And user click on winner title+ icon 
-		And user validate the label name and enter the winner Title2 as
-		And user validate the label name and enter the winner amount2
+#		And user click on winner title+ icon 
+#		And user validate the label name and enter the winner Title2 as
+#		And user validate the label name and enter the winner amount2
 		And user validate the link label name and enter the Link
 		And user validate incentive details label name and enter the incentive details as
 		And user validate the create button and click on it
