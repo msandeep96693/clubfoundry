@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 					"src/test/resources/Incentivescenario/createincentive.feature", 
 					},
  				glue = {"definitionsteps" },
- 				dryRun = true,
+ 				dryRun = false,
 // 				dryRun true will not execute
  				monochrome = true		
 	        	)

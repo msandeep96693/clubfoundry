@@ -2,6 +2,8 @@ package PageObject;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +36,7 @@ public class Createincentivepage {
 	
 	@FindBy(xpath = "//input[@placeholder='Enter title']") private WebElement Enterincentivenameintotextfield;
 	
-	@FindBy(xpath = "//button[@aria-label='Open calendar']") private WebElement calenderstartandenddatebutton;
+	@FindBy(xpath = "//button[@aria-label='Open calendar']") private List<WebElement> calenderstartandenddatebutton;
 	@FindBy(xpath = "//button[@aria-label='Choose month and year'] ") private WebElement clickonmonthandyearcombined;
 	@FindBy(xpath = "(//tbody[@class='mat-calendar-body']/tr)//td/button") private List<WebElement> calenderyearlist;
 	@FindBy(xpath = "(//tbody[@class='mat-calendar-body']/tr)//td/button") private List<WebElement> calendremonthlist;
@@ -106,16 +108,20 @@ public class Createincentivepage {
 				 Enterincentivedetailstextdata.sendKeys(incentivedetails);
 				 
 			 }
+			 
 		}
 	}
 	
 	public void Dropdownlabelnamevalidationandaction(String labelname, String optionname) throws InterruptedException
 	{
+		System.out.println("LENGTHE SIZE ;- "+Alllabelvalidation.size());
 		for(WebElement Alllabelnamelist:Alllabelvalidation)
 		{
+			System.out.println("webelement :------"+Alllabelnamelist.getText());
 			 String fetchlabelnamelist = Alllabelnamelist.getText();
 			 if(fetchlabelnamelist.equalsIgnoreCase(labelname))
 			 {
+				 System.out.println("EXECUTE --------------------");
 				 clickonminiclubdropdown.click();
 				 for(WebElement miniclubdropdownoption : miniclubdropdownoptionlist)
 				 {
@@ -127,12 +133,16 @@ public class Createincentivepage {
 							 miniclubdropdownoption.click();
 						 }
 					} catch (StaleElementReferenceException e) {
-						String minicluboptionnamelist = miniclubdropdownoption.getText();
-						System.out.println("List of mini club Names :- "+minicluboptionnamelist);
+						
+						System.out.println(e);
 					}
 				 }
-			 } else 
+				 
+				 System.out.println("TEST 1---------");
+			 } 
+			 else if(fetchlabelnamelist.equalsIgnoreCase(labelname))
 			 {
+				 System.out.println("TEST 2 ----------------");
 				 clickoncountrydropdown.click();
 				 for(WebElement countrydropdownoption : countrycurrencydropdownlist)
 				 {
@@ -153,19 +163,69 @@ public class Createincentivepage {
 		 if(driver.getPageSource().contains(addanimagelabel))
 		 {
 			 System.out.println("Name of the Label: "+ addimagelabelvalidation.getText());
-			 uploadanimage.sendKeys("/home/active34/Downloads/photos /A16Z crypto.jpeg");
+			
+//			 WebElement addanimagetext = driver.findElement(By.xpath("//div[.='Add an Image']"));
+//			 JavascriptExecutor js = (JavascriptExecutor) driver;
+//			 js.executeScript("arguments[0].scrollIntoView(true);", addanimagetext);
+//			 js.executeScript("arguments[0].style.display='block';", uploadanimage);
+//			 js.executeScript("arguments[0].setAttribute('style', 'visibility:visible; opacity:1;');", uploadanimage);
+//			 js.executeScript("arguments[0].removeAttribute('onchange');", uploadanimage);
+//			 uploadanimage.sendKeys("/home/active34/Downloads/photos/A16Z crypto.jpeg");
+//			 js.executeScript("arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", uploadanimage);
+			 
+			 JavascriptExecutor js = (JavascriptExecutor) driver;
+			 WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']/../div/p/preceding-sibling::input[@type='file']"));
+			 js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", uploadInput);
+			 uploadInput.sendKeys("/home/active34/Downloads/photos/A16Z_crypto.jpeg");
+			 System.out.println("File uploaded successfully!");
+
 		 }
 	}
 	
 	
-//	public void startandenddatevalidationandaction(String labelname)
+//	public void startandenddatevalidationandaction(String labelname, String monthyeartextname, String yeartextname,
+//			String monthtextname, String daytextname)
 //	{
 //		for(WebElement Alllabelnamelist:Alllabelvalidation)
 //		{
 //			 String fetchlabelnamelist = Alllabelnamelist.getText();
 //			 if(fetchlabelnamelist.equalsIgnoreCase(labelname))
 //			 {
-//				 
+//				for(WebElement calenderinitialbutton :calenderstartandenddatebutton)
+//				{
+//					calenderinitialbutton.click();
+//					String monthandyeartext = clickonmonthandyearcombined.getText();
+//					if(monthandyeartext.equalsIgnoreCase(monthyeartextname))
+//					{
+//						clickonmonthandyearcombined.click();
+//						for(WebElement yearlist : calenderyearlist)
+//						{
+//							String yeartext = yearlist.getText();
+//							if(yeartext.equalsIgnoreCase(yeartextname))
+//							{
+//								yearlist.click();
+//								for(WebElement monthlist : calendremonthlist)
+//								{
+//									String monthtext = monthlist.getText();
+//									if(monthtext.equalsIgnoreCase(monthtextname))
+//									{
+//										System.out.println(monthlist.getText());
+//										monthlist.click();
+//										for(WebElement daylist : calenderdaylist)
+//										{
+//											String daytext = daylist.getText();
+//											if(daytext.equalsIgnoreCase(daytextname))
+//											{
+//												daylist.click();
+//											}
+//											
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
 //			 }
 //	}
 //}

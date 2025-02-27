@@ -30,14 +30,14 @@ public class Stepcreateincentive extends Baseclass {
 	public void user_validate_the_label_name_and_enter_the_title_name_as() {
 		createincentive.Allcomponenttextfieldlabelnamevalidationandaction("Title", "Create Automation Incentive", null, null, null, null, null, null);
 	}
-	
+//	
 //	@And("user validate the label name and select the start date from calender")
 //	public void user_validate_the_label_name_and_select_the_start_date_from_calender() {
-//		
+//		createincentive.startandenddatevalidationandaction("Start date", "FEB 2025", "2025", "FEB", "27");
 //	}
 //	@And("user validate the label name and select the end date from calender")
 //	public void user_validate_the_label_name_and_select_the_end_date_from_calender() {
-//	    
+//		createincentive.startandenddatevalidationandaction("Last date", "FEB 2025", "2025", "MAR", "10");
 //	}
 	@And("user validate the label name and Add an image")
 	public void user_validate_the_label_name_and_add_an_image() {
