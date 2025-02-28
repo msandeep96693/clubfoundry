@@ -22,7 +22,7 @@ public class Signinpage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//input[@id='email'] ") private WebElement emailaddress;
+	@FindBy(xpath = "//input[@id='email']") private WebElement emailaddress;
 	@FindBy(xpath = "//mat-label[.='Email address']") private WebElement emailvalidation;
 	@FindBy(xpath = "//input[@id='password']") private WebElement password;
 	@FindBy(xpath = "// mat-label[.='Password'] ") private WebElement passwordvalidation;
@@ -86,9 +86,6 @@ public class Signinpage {
 		{
 			System.out.println("CHECK BOX NAME :- "+remembermevalidation.getText());
 		}
-		
-//		org.junit.Assert.assertEquals(remembermevalidation.getText(),Expectedremembermelabel,"Heading text does not match expected.");
-//		System.out.println("CHECK BOX NAME : Text label is Matching");
 	}
 	
 	public void rememberme() 

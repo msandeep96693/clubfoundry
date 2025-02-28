@@ -1,5 +1,10 @@
 package PageObject;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -43,8 +48,8 @@ public class Createincentivepage {
 	@FindBy(xpath = "//tbody[@class='mat-calendar-body']/tr/td/button") private List<WebElement> calenderdaylist;
 	
 	@FindBy(xpath = "//p[.='Upload an Image']") private WebElement uploadanimage;
-	@FindBy(xpath = "//input[@formcontrolname='max_submissions']") private WebElement maxsubmissiontextfield;
-	@FindBy(xpath = "//input[@formcontrolname='eligible_winners']") private WebElement eligiblewinnertextfield;
+	@FindBy(xpath = "//input[@placeholder='Max. submissions']") private WebElement maxsubmissiontextfield;
+	@FindBy(xpath = "//input[@placeholder='Eligible winners']") private WebElement eligiblewinnertextfield;
 	@FindBy(xpath = "//input[@formcontrolname='winner_title']") private WebElement winnertitletextfield;
 	
 	@FindBy(xpath = "(//mat-select[@role='combobox'])[2]") private WebElement clickoncountrydropdown;
@@ -72,54 +77,81 @@ public class Createincentivepage {
 	{
 		createincentiveplusbutton.click();
 	}
+		
 	
-	public void Allcomponenttextfieldlabelnamevalidationandaction(String labelname, String Incentivename, String maxsubmissionnumber, String eligiblewinnernumber,
-			String winner1title, String winneramount, String link, String incentivedetails)
-	{
-		for(WebElement Alllabelnamelist:Alllabelvalidation)
-		{
-			 String fetchlabelnames = Alllabelnamelist.getText();
-			 if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 Enterincentivenameintotextfield.sendKeys(Incentivename);
-				 
-			 }else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 maxsubmissiontextfield.sendKeys(maxsubmissionnumber);
-				 
-			 } else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 eligiblewinnertextfield.sendKeys(eligiblewinnernumber);
-				 
-			 } else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 winnertitletextfield.sendKeys(winner1title);
-				 
-			 } else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 winneramounttextfield.sendKeys(winneramount);
-				 
-			 } else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 linktextfield.sendKeys(link);
-				 
-			 } else if(fetchlabelnames.equalsIgnoreCase(labelname))
-			 {
-				 Enterincentivedetailstextdata.sendKeys(incentivedetails);
-				 
-			 }
-			 
-		}
+	public void Allcomponenttextfieldlabelnamevalidationandaction(
+	        String labelName, String incentiveName, String maxSubmissionNumber, String eligibleWinnerNumber,
+	        String winner1Title, String winnerAmount, String link, String incentiveDetails) {
+	    
+	    for (WebElement allLabelNameList : Alllabelvalidation) {
+	        String fetchLabelNames = allLabelNameList.getText(); // Convert text to lowercase
+	        
+	        switch (fetchLabelNames) {  
+	            case "Title":
+	                if (incentiveName != null) {
+	                    Enterincentivenameintotextfield.sendKeys(incentiveName);
+	                } 
+	                break;
+
+	            case "Max Submission":
+	                if (maxSubmissionNumber != null) {
+	                    maxsubmissiontextfield.sendKeys(maxSubmissionNumber);
+	                } 
+	                break;
+
+	            case "Eligible Winner":
+	                if (eligibleWinnerNumber != null) {
+	                    eligiblewinnertextfield.sendKeys(eligibleWinnerNumber);
+	                    try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+	                } 
+	                break;
+
+	            case "Winner 1 Title":
+	                if (winner1Title != null) {
+	                    winnertitletextfield.sendKeys(winner1Title);
+	                } 
+	                break;
+
+	            case "Winner 1 Amount":
+	                if (winnerAmount != null) {
+	                    winneramounttextfield.sendKeys(winnerAmount);
+	                } 
+	                break;
+
+	            case "Link 1":
+	                if (link != null) {
+	                    linktextfield.sendKeys(link);
+	                } 
+	                break;
+
+	            case "Incentive Details":
+	                if (incentiveDetails != null) {
+	                    Enterincentivedetailstextdata.sendKeys(incentiveDetails);
+	                } 
+	                break;
+
+	            default:
+	                System.out.println("No matching label found for: " + fetchLabelNames);
+	                break;
+	        }
+	    }
 	}
+
 	
-	public void Dropdownlabelnamevalidationandaction(String labelname, String optionname) throws InterruptedException
+	
+	public void Dropdownlabelnamevalidationandaction(String optionname) throws InterruptedException
 	{
 		System.out.println("LENGTHE SIZE ;- "+Alllabelvalidation.size());
 		for(WebElement Alllabelnamelist:Alllabelvalidation)
 		{
-			System.out.println("webelement :------"+Alllabelnamelist.getText());
+//			System.out.println("webelement :------"+Alllabelnamelist.getText());
 			 String fetchlabelnamelist = Alllabelnamelist.getText();
-			 if(fetchlabelnamelist.equalsIgnoreCase(labelname))
+			 if(fetchlabelnamelist.equalsIgnoreCase("Mini Club"))
 			 {
 				 System.out.println("EXECUTE --------------------");
 				 clickonminiclubdropdown.click();
@@ -137,10 +169,8 @@ public class Createincentivepage {
 						System.out.println(e);
 					}
 				 }
-				 
-				 System.out.println("TEST 1---------");
 			 } 
-			 else if(fetchlabelnamelist.equalsIgnoreCase(labelname))
+			 else if(fetchlabelnamelist.equalsIgnoreCase("Winner 1 Amount"))
 			 {
 				 System.out.println("TEST 2 ----------------");
 				 clickoncountrydropdown.click();
@@ -151,6 +181,7 @@ public class Createincentivepage {
 					 if(countryoptionnamelist.equalsIgnoreCase(optionname))
 					 {
 						 countrydropdownoption.click();
+						 
 					 }
 				 }
 			 }
@@ -158,7 +189,7 @@ public class Createincentivepage {
 	}
 	
 	String addanimagelabel = "Add an Image";
-	public void addimagelabelvalidationandaction()
+	public void addimagelabelvalidationandaction() 
 	{
 		 if(driver.getPageSource().contains(addanimagelabel))
 		 {
@@ -173,11 +204,30 @@ public class Createincentivepage {
 //			 uploadanimage.sendKeys("/home/active34/Downloads/photos/A16Z crypto.jpeg");
 //			 js.executeScript("arguments[0].dispatchEvent(new Event('change', { bubbles: true }));", uploadanimage);
 			 
-			 JavascriptExecutor js = (JavascriptExecutor) driver;
-			 WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']/../div/p/preceding-sibling::input[@type='file']"));
-			 js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", uploadInput);
-			 uploadInput.sendKeys("/home/active34/Downloads/photos/A16Z_crypto.jpeg");
-			 System.out.println("File uploaded successfully!");
+//			 JavascriptExecutor js = (JavascriptExecutor) driver;
+//			 WebElement uploadInput = driver.findElement(By.xpath("//input[@type='file']/../div/p/preceding-sibling::input[@type='file']"));
+//			 js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", uploadInput);
+//			 uploadInput.sendKeys("/home/active34/Downloads/photos/A16Z_crypto.jpeg");
+//			 System.out.println("File uploaded successfully!");
+			 
+			 
+//			 StringSelection filePath = new StringSelection("/home/active34/Downloads/photos/A16Z crypto.jpeg"); // Change file path
+//		        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath, null);
+//
+//		        // Use Robot class to paste the file path and press Enter
+//		        Robot robot = new Robot();
+//
+//		        // Press CTRL + V (paste)
+//		        robot.keyPress(KeyEvent.VK_CONTROL);
+//		        robot.keyPress(KeyEvent.VK_V);
+//		        robot.keyRelease(KeyEvent.VK_V);
+//		        robot.keyRelease(KeyEvent.VK_CONTROL);
+//
+//		        // Press Enter to upload
+//		        robot.keyPress(KeyEvent.VK_ENTER);
+//		        robot.keyRelease(KeyEvent.VK_ENTER);
+//
+//		        System.out.println("File uploaded successfully!");
 
 		 }
 	}
@@ -209,7 +259,7 @@ public class Createincentivepage {
 //									String monthtext = monthlist.getText();
 //									if(monthtext.equalsIgnoreCase(monthtextname))
 //									{
-//										System.out.println(monthlist.getText());
+//										System.out.println("Name of the Month :- "+monthtext);
 //										monthlist.click();
 //										for(WebElement daylist : calenderdaylist)
 //										{
@@ -230,10 +280,10 @@ public class Createincentivepage {
 //	}
 //}
 	
-	public void validatecreatebuttonandaction(long durationInSeconds)
+	public void validatecreatebuttonandaction()
 	{
-		elementutil.waitforvisibilityofelement(createbutton, durationInSeconds);
-		System.out.println("create button is visibled");
+//		elementutil.waitforvisibilityofelement(createbutton, durationInSeconds);
+//		System.out.println("create button is visibled");
 		createbutton.click();
 	}
 	
