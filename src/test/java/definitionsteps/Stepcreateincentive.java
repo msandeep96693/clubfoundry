@@ -25,7 +25,7 @@ public class Stepcreateincentive extends Baseclass {
 	
 	@And("user validate the label name and select mini club name option")
 	public void user_validate_the_label_name_and_select_mini_club_name_option() throws InterruptedException {
-		createincentive.Dropdownlabelnamevalidationandaction("Investors Hub");
+		createincentive.Dropdownlabelnamevalidationandaction("Mini Club", "Investors Hub");
 	}
 	
 	@And("user validate the label name and enter the title name as")
@@ -33,15 +33,17 @@ public class Stepcreateincentive extends Baseclass {
 		createincentive.Allcomponenttextfieldlabelnamevalidationandaction(null, "Create Automation Incentive", null, null, null, null, null, null);
 	}
 	
-//	@And("user validate the label name and select the start date from calender")
-//	public void user_validate_the_label_name_and_select_the_start_date_from_calender() {
-//		createincentive.startandenddatevalidationandaction("Start date", "FEB 2025", "2025", "FEB", "28");
-//	}
-//	
-//	@And("user validate the label name and select the end date from calender")
-//	public void user_validate_the_label_name_and_select_the_end_date_from_calender() {
-//		createincentive.startandenddatevalidationandaction("Last date", "FEB 2025", "2025", "MAR", "10");
-//	}
+	@And("user validate the label name and select the start date from calender")
+	public void user_validate_the_label_name_and_select_the_start_date_from_calender() throws InterruptedException {
+		createincentive.startandenddatevalidationandaction("Start date", "MAR 2025", "2025", "MAR", "3");
+//		createincentive.startandenddatevalidationandaction("Start date", "3");
+	}
+
+	@And("user validate the label name and select the end date from calender")
+	public void user_validate_the_label_name_and_select_the_end_date_from_calender() throws InterruptedException {
+		createincentive.startandenddatevalidationandaction("Last date", "MAR 2025", "2025", "MAR", "10");
+//		createincentive.startandenddatevalidationandaction("Last date", "4");
+	}
 	@And("user validate the label name and Add an image")
 	public void user_validate_the_label_name_and_add_an_image()  {
 		createincentive.addimagelabelvalidationandaction();
@@ -64,7 +66,7 @@ public class Stepcreateincentive extends Baseclass {
 	
 	@And("user click on currency dropdown1 and select the option")
 	public void user_click_on_currency_dropdown1_and_select_the_option() throws InterruptedException {
-	    createincentive.Dropdownlabelnamevalidationandaction("INR ₹");   
+	    createincentive.Dropdownlabelnamevalidationandaction(" Winner 1 Amount"," INR ₹");   
 	}
 	
 	@And("user validate the label name and enter the winner amount")

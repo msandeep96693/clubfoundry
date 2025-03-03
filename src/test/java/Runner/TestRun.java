@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions( features = { "src/test/resources/Loginscenario/loginscenario.feature",
+@CucumberOptions( features = { 
 					"src/test/resources/Incentivescenario/createincentive.feature", 
 					},
  				glue = {"definitionsteps" },
@@ -19,3 +19,5 @@ public class TestRun {
 
 }
 //"src/test/resources/Miniclub/Createminiclub.feature"
+//"src/test/resources/Loginscenario/loginscenario.feature"
+ 

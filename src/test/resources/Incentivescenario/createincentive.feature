@@ -16,8 +16,8 @@ Feature: crete incentive functionality
 		And user click on incentive+ button
 		And user validate the label name and select mini club name option
 		And user validate the label name and enter the title name as
-		#And user validate the label name and select the start date from calenders
-		#And user validate the label name and select the end date from calender
+		And user validate the label name and select the start date from calender
+		And user validate the label name and select the end date from calender
 		And user validate the label name and Add an image
 		And user validate the label name and enter the max submission data as
 		And user validate the label name and enter the Eligible winner data as
