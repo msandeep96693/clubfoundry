@@ -35,17 +35,17 @@ public class Stepcreateincentive extends Baseclass {
 	
 	@And("user validate the label name and select the start date from calender")
 	public void user_validate_the_label_name_and_select_the_start_date_from_calender() throws InterruptedException {
-		createincentive.startandenddatevalidationandaction("Start date", "MAR 2025", "2025", "MAR", "3");
-//		createincentive.startandenddatevalidationandaction("Start date", "3");
+		createincentive.clickFirstButton();
+		createincentive.clickdaylistdata("4");
 	}
 
 	@And("user validate the label name and select the end date from calender")
 	public void user_validate_the_label_name_and_select_the_end_date_from_calender() throws InterruptedException {
-		createincentive.startandenddatevalidationandaction("Last date", "MAR 2025", "2025", "MAR", "10");
-//		createincentive.startandenddatevalidationandaction("Last date", "4");
+		createincentive.clickSecondButton();
+		createincentive.clickdaylistdata("10");
 	}
 	@And("user validate the label name and Add an image")
-	public void user_validate_the_label_name_and_add_an_image()  {
+	public void user_validate_the_label_name_and_add_an_image() throws InterruptedException, AWTException  {
 		createincentive.addimagelabelvalidationandaction();
 	}
 	

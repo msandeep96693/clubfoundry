@@ -22,6 +22,8 @@ public class Createminiclubpage {
 
 	
 	@FindBy(xpath = "//span[.=' Mini Clubs ']") private WebElement leftnavigationminiclubbutton;
+	@FindBy(xpath = "(//div[.='Mini Clubs']/../following-sibling::div/div)[1]/div/div/div") private List<WebElement> miniclubvalidationlistdata;
+	
 	@FindBy(xpath = "//app-add-button[@mattooltip='Create Club']/button") private WebElement miniclubcreatebutton;
 	
 	@FindBy(xpath = "//mat-form-field/div/div/div/label") private List<WebElement> Allvalidationoflabelname;
@@ -45,7 +47,25 @@ public class Createminiclubpage {
 			leftnavigationminiclubbutton.click();
 		}
 	}
+	
+	public void fetchthelistofminiclubdata()
+	{
+		for( WebElement miniclublistdata : miniclubvalidationlistdata)
+		{
+			String validationlistdata = miniclublistdata.getText();
+			System.out.println("List of mini club :- "+ validationlistdata);
+		}
+	}
 
+	public void clickonminiclubbutton()
+	{
+		miniclubcreatebutton.click();
+	}
+	
+	public void enterthedataintominiclubtextfield(String Inputdata)
+	{
+		Enterminiclubnameintotextfield.sendKeys(Inputdata);
+	}
 	
 	
 }

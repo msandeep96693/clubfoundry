@@ -12,18 +12,18 @@ Feature: crete miniclub functionality
 
   Scenario: create miniclub
   
-		And user click on mini club from left navigation bar
+		And click on mini club from left navigation bar
 		And validate the mini club list page
-		And user click on mini club+ button
-		And user validate label name and enter club name into the textfield
-		And user validate label name and select access level option
-		And user validate label name and select the profile picture
-		And user validate label name and select the club type 
-		And user validate label name and select the club tags
-		And user validate label name and select the moderator
-		And user validate label name and select the members
-		And user validate label name and enter club details into the textarea
-		And user validate the button name and click on create button
+		And click on mini club button
+		And enter club name into the textfield
+		And select access level option
+		And select the profile picture
+		And select the club type 
+		And select the club tags
+		And select the moderator
+		And select the members
+		And enter club details into the textarea
+		And click on create button
 		Then successfully mini club is created
 		Then validate the mini club details
 		   

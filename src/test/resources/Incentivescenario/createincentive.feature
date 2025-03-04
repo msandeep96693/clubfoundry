@@ -26,7 +26,7 @@ Feature: crete incentive functionality
 		And user validate the label name and enter the winner amount
 #		And user click on winner title+ icon 
 #		And user validate the label name and enter the winner Title2 as
-#		And user validate the label name and enter the winner amount2
+#		And user validate the label name and enter the winner amount2s
 		And user validate the link label name and enter the Link
 		And user validate incentive details label name and enter the incentive details as
 		And user validate the create button and click on it
