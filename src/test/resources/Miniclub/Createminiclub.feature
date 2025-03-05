@@ -18,7 +18,7 @@ Feature: crete miniclub functionality
 		And enter club name into the textfield
 		And select access level option
 		And select the profile picture
-		And select the club type 
+		And select the club type
 		And select the club tags
 		And select the moderator
 		And select the members
@@ -32,3 +32,5 @@ Feature: crete miniclub functionality
     And user click on signout button
     Then user verify the sign in page
     And user close the browser
+    
+    

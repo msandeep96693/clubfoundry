@@ -150,7 +150,7 @@ public class Signinpage {
 	
 	public void clickonuserprofileicon() throws InterruptedException
 	{
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		userprofileicon.click();
 	}
 
