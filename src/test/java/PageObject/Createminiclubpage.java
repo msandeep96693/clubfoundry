@@ -46,8 +46,9 @@ public class Createminiclubpage {
 	@FindBy(xpath = "//textarea[@formcontrolname='description']") private WebElement clubdescription;
 	@FindBy(xpath = "(//span[.='Create'])[2]") private WebElement createbutton;
 	
-	@FindBy(xpath = "(((//div[.='Club Details']/../../..//following-sibling::div)[2]/div)[1]/div/div/div)[2]") private List<WebElement> newlycreatedclubdetails;
+//	@FindBy(xpath = "(((//div[.='Club Details']/../../..//following-sibling::div)[2]/div)[1]/div/div/div)[2]") private List<WebElement> newlycreatedclubdetails;
 	
+	@FindBy(xpath = "(((//div[.='Club Details']/../../..//following-sibling::div)[2]/div)[1]/div/div/div)[2]/div/div") private List<WebElement> newlycreatedclubdetails;
 	
 	
 	String miniclubname = " Mini Clubs ";
