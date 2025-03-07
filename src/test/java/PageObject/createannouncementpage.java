@@ -1,5 +1,9 @@
 package PageObject;
 
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +24,101 @@ public class createannouncementpage {
 	
 	@FindBy(xpath = "//span[.=' Announcements ']") private WebElement leftannouncementbutton;
 	@FindBy(xpath = "//app-add-button[@mattooltip='Add Announcement']/button") private WebElement addannouncement;
+	@FindBy(xpath = "(//div[.=' New Announcement ']/../../../following-sibling::div/div)[1]/div/mat-form-field/div/div/div/label/mat-label") private List<WebElement> fourvalidationlabelname;     
+	@FindBy(xpath = "//input[@id='title']") private WebElement enterannouncementname;
 	
+	@FindBy(xpath = "//button[@aria-label='Open calendar']") private WebElement calenderdatebutton;
+	@FindBy(xpath = "//tbody[@class='mat-calendar-body']/tr/td/button") private List<WebElement> calenderdaylist;
 	
+	@FindBy(xpath = "(//input[@placeholder='Link'])[1]") private WebElement enterlinkdataintotextfield1;
+	@FindBy(xpath = "(//input[@placeholder='Link'])[2]") private WebElement enterlinkdataintotextfield2;
+	
+	@FindBy(xpath = "//textarea[@formcontrolname='details']") private WebElement enterdescriptiontextarea;
+	@FindBy(xpath = "(//span[.='Create'])[2]/../..") private WebElement createbutton;
+	@FindBy(xpath = "(((//div[.=' Announcement Details ']/../../../following-sibling::div/div)[1]/div)[1]/div)[2]/div") private List<WebElement> announcmentdetailsdata;
+	
+	public void clicksidebarannouncementbutton()
+	{
+		if(leftannouncementbutton.isDisplayed() || leftannouncementbutton.isEnabled())
+		{
+			leftannouncementbutton.click();
+		}
+	}
+	
+	public void clickonaddannouncemnticon()
+	{
+		addannouncement.click();
+	}
+	
+	public void selectdatefromcalender(String Expectedtext)
+	{
+		calenderdatebutton.click();
+		for(WebElement daylist:calenderdaylist)
+		{
+			try {
+				String daydata = daylist.getText();
+				if(daydata.equalsIgnoreCase(Expectedtext))
+				{
+					daylist.click();
+				}
+			} catch (StaleElementReferenceException e) {
+				System.out.print("");
+			}	
+		}
+	}
+	
+	public void Enterdataintotextfield(String Labelname, String announcementname, String link1data, String link2data, String detailsdata)
+	{
+		for(WebElement validationlabelname:fourvalidationlabelname)
+		{
+			String labelnames = validationlabelname.getText();
+//			System.out.println("List of Labelnames :"+ labelnames);
+			
+			switch (labelnames) {
+			case "Title":
+				if (announcementname != null) {
+					enterannouncementname.sendKeys(announcementname);
+				}
+				break;
+
+			case "Link 1":
+				if (link1data != null) {
+					enterlinkdataintotextfield1.sendKeys(link1data);
+				}
+				break;
+
+			case "Link 2":
+				if (link2data != null) {
+					enterlinkdataintotextfield2.sendKeys(link2data);
+
+				}
+				break;
+
+			case "Details":
+				if (detailsdata != null) {
+					enterdescriptiontextarea.sendKeys(detailsdata);
+				}
+				break;
+
+		}
+		}
+	}
+	
+	public void clickoncreatebutton()
+	{
+		if(createbutton.isDisplayed() || createbutton.isEnabled())
+		{
+			createbutton.click();
+		}
+	}
+	
+	public void validateannouncementdetailspage() throws InterruptedException
+	{
+		for(WebElement validationdetails : announcmentdetailsdata)
+		{
+			Thread.sleep(2000);
+			String detailsdata = validationdetails.getText();
+			System.out.println("Announcement details data :"+ detailsdata);
+		}
+	}
 }

@@ -12,6 +12,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import PageObject.Createincentivepage;
 import PageObject.Signinpage;
+import PageObject.clubdashboardpage;
+import PageObject.createannouncementpage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -20,6 +22,8 @@ public class Baseclass {
 	public static WebDriver driver;
 	public Signinpage signin;
 	public Createincentivepage createincentive;
+	public createannouncementpage createannoucement;
+	public clubdashboardpage clubdashboard;
 	
 //	@Before
 	public void InitialiseBrowser(String BrowserName) {

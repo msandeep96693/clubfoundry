@@ -118,8 +118,8 @@ public class Createincentivepage {
 			String link, String incentiveDetails) {
 
 		for (WebElement allLabelNameList : Alllabelvalidation) {
-			String fetchLabelNames = allLabelNameList.getText(); // Convert text to lowercase
-
+			String fetchLabelNames = allLabelNameList.getText(); 
+			
 			switch (fetchLabelNames) {
 			case "Title":
 				if (incentiveName != null) {
