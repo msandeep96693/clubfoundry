@@ -12,6 +12,9 @@ public class Stepcreateannouncement extends Baseclass {
 		createannoucement = new createannouncementpage(driver);
 		createannoucement.clicksidebarannouncementbutton();
 	}
+	
+	// ---------------create announcement --------------------------
+	
 	@And("click on announcement button")
 	public void click_on_announcement_button() {
 	   createannoucement.clickonaddannouncemnticon();
@@ -51,5 +54,34 @@ public class Stepcreateannouncement extends Baseclass {
 	public void validate_the_announcement_details() throws InterruptedException {
 	   createannoucement.validateannouncementdetailspage();
 	}
-
+	
+	// -------------------------------- delete announcement -----------------------------------
+	
+	@And("Ensure the announcement status in a list")
+	public void validate_the_announcement_status_in_a_list() {
+	   createannoucement.announcementstatusinalist();
+	}
+	
+	@And("select and click any announcement from list")
+	public void select_and_click_any_announcement_from_list() throws InterruptedException {
+	   createannoucement.Ensureannouncementstatusinalist("On-going", "Not Started");  // "Ongoing", "Not started"
+	}
+	
+	@And("Ensure the annoucement details page")
+	public void ensure_the_annoucement_details_page() {
+	    
+	}
+	
+	@When("click on delete icon")
+	public void click_on_delete_icon() {
+	    
+	}
+	
+	@And("Ensure admin redirected to announcement home page")
+	public void ensure_admin_redirected_to_announcement_home_page() {
+	   
+	}
+	
+	
+	
 }

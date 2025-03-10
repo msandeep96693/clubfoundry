@@ -3,6 +3,7 @@ package PageObject;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,6 +37,22 @@ public class createannouncementpage {
 	@FindBy(xpath = "//textarea[@formcontrolname='details']") private WebElement enterdescriptiontextarea;
 	@FindBy(xpath = "(//span[.='Create'])[2]/../..") private WebElement createbutton;
 	@FindBy(xpath = "(((//div[.=' Announcement Details ']/../../../following-sibling::div/div)[1]/div)[1]/div)[2]/div") private List<WebElement> announcmentdetailsdata;
+	
+	// delete announcement xpath
+	
+	@FindBy(xpath = "//span[.=' Completed']/..") private List<WebElement> completdstatusannouncementlist;
+	@FindBy(xpath = "//span[.='Not Started']") private WebElement completedstatus;
+	
+	@FindBy(xpath = "//span[.='On-going']/..") private List<WebElement> ongoingstatusannouncementlist;
+	@FindBy(xpath = "//span[.='On-going']") private WebElement ongoingstatus;
+	
+	@FindBy(xpath = "//span[.='Not Started']/..") private List<WebElement> notstartedstatusannouncementlist;
+	@FindBy(xpath = "//span[.='Not Started']") private WebElement notstartedstatus;
+	
+	@FindBy(xpath = "//div[@class='flex flex-auto items-center gap-2 sm:gap-6']//span[2]") private List<WebElement> announcementstatus;	
+	@FindBy(xpath = "(//div[.='Announcements']/../../following-sibling::div)[1]/div/div/div/div/div[1]") private List<WebElement> listofannouncement;
+	
+
 	
 	public void clicksidebarannouncementbutton()
 	{
@@ -121,4 +138,81 @@ public class createannouncementpage {
 			System.out.println("Announcement details data :"+ detailsdata);
 		}
 	}
+	
+	// -----------------delete announcement ---------------------------
+	
+	
+	public void announcementstatusinalist()
+	{
+		for(int i = 0; i<announcementstatus.size(); i++)
+		{
+			String completedstatusname = announcementstatus.get(0).getText();
+			System.out.println("completed status names :"+ completedstatusname);
+		}
+	}
+	
+	
+	
+	
+	
+	public void Ensureannouncementstatusinalist(String statusname) throws InterruptedException  
+	{
+
+		
+		for(int i = 0; i<announcementstatus.size(); i++)
+        {
+            String completedstatusname = announcementstatus.get(i).getText();
+            if(completedstatusname.equalsIgnoreCase(statusname) )
+            {
+                listofannououcementdata(i);
+            }
+            
+        }
+    }
+    
+    public void listofannououcementdata(int index) throws InterruptedException
+    {
+       
+            
+			listofannouncement.get(index/2).click();
+    }
+    
 }
+		
+		
+			
+//			if(ongoingstatus.getText().equalsIgnoreCase(ongoing))
+//			{
+//				System.out.println("Ongoing name :"+ ongoingstatus.getText());
+//				for(int i = 0; i<ongoingstatusannouncementlist.size(); i++)
+//				{
+//					String ongoingstatusname = ongoingstatusannouncementlist.get(i).getText();
+//					System.out.println("ongoing status names :"+ ongoingstatusname);
+//					ongoingstatusannouncementlist.get(i).click();
+//					break;
+//				}
+//				
+//				
+//			} else if (notstartedstatus.getText().equalsIgnoreCase(notstarted))
+//				{
+//				System.out.println("notstarted name :"+ notstartedstatus.getText());
+//				for(int i = 0; i<notstartedstatusannouncementlist.size(); i++)
+//				{
+//					String notstartedstatusname = notstartedstatusannouncementlist.get(i).getText();
+//					System.out.println("not started status names :"+ notstartedstatusname);
+//					notstartedstatusannouncementlist.get(i).click();
+//					break;
+//				}
+//			} else {
+//				
+//				System.out.println("Donot required completed status list ");
+//			}
+//			
+//		
+//		
+//	}
+		
+	
+	
+
+

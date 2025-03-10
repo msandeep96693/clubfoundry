@@ -1,14 +1,14 @@
 Feature: crete announcement functionality
 
-  Background: 
-    Given user should navigate to the login page
-    When user enter url as "https://tfc.tech-active.com/sign-in"
-    And user enter the valid email address "admin@foundry.com"
-    And user enter the valid password "1234"
-    And user click on remember me check box
-    And user click on sign in button
-    And user successfully logged into the application
-    Then user validate the dashboard
+  Background:
+    Given should navigate to the login page
+    When enter url as "https://tfc.tech-active.com/sign-in"
+    And enter the valid email address "admin@foundry.com"
+    And enter the valid password "1234"
+    And click on remember me check box
+    And click on sign in button
+    And admin successfully logged into the application
+    Then admin validate the dashboard
 
   Scenario: create announcement
   
@@ -23,11 +23,11 @@ Feature: crete announcement functionality
 		And successfully announcement is created
 		And validate the announcement details
 			   
-    When user click on my profile icon in dashboard
-    And user validate the user email id
-    And user click on signout button
-    Then user verify the sign in page
-    And user close the browser
+  	When click on my profile icon in dashboard
+    And admin validate the user email id
+    And click on signout button
+    Then admin verify the sign in page
+    And close the browser
     
     
     
