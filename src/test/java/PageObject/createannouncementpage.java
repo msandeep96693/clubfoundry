@@ -3,6 +3,7 @@ package PageObject;
 import java.time.Duration;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -40,6 +41,16 @@ public class createannouncementpage {
 	
 	// delete announcement xpath
 	
+	@FindBy(xpath = "(//button)[7]") private WebElement deletebutton;
+	@FindBy(xpath = "//span[.='Yes']/..") private WebElement deletepopupyesbutton;
+	@FindBy(xpath = "//div[text()='Announcement deleted successfully.']") private WebElement deleteconfirmationmessage;
+	
+	// update announcement xpath
+	
+	@FindBy(xpath = "(//button)[6]") private WebElement updatebutton;
+	@FindBy(xpath = "//div[text()='Announcement updated successfully.']") private WebElement updateconfirmationmessage;
+	
+	
 	@FindBy(xpath = "//span[.=' Completed']/..") private List<WebElement> completdstatusannouncementlist;
 	@FindBy(xpath = "//span[.='Not Started']") private WebElement completedstatus;
 	
@@ -50,6 +61,7 @@ public class createannouncementpage {
 	@FindBy(xpath = "//span[.='Not Started']") private WebElement notstartedstatus;
 	
 	@FindBy(xpath = "//div[@class='flex flex-auto items-center gap-2 sm:gap-6']//span[2]") private List<WebElement> announcementstatus;	
+	
 	@FindBy(xpath = "(//div[.='Announcements']/../../following-sibling::div)[1]/div/div/div/div/div[1]") private List<WebElement> listofannouncement;
 	
 
@@ -141,28 +153,12 @@ public class createannouncementpage {
 	
 	// -----------------delete announcement ---------------------------
 	
-	
-	public void announcementstatusinalist()
-	{
-		for(int i = 0; i<announcementstatus.size(); i++)
-		{
-			String completedstatusname = announcementstatus.get(0).getText();
-			System.out.println("completed status names :"+ completedstatusname);
-		}
-	}
-	
-	
-	
-	
-	
 	public void Ensureannouncementstatusinalist(String statusname) throws InterruptedException  
 	{
-
-		
 		for(int i = 0; i<announcementstatus.size(); i++)
         {
-            String completedstatusname = announcementstatus.get(i).getText();
-            if(completedstatusname.equalsIgnoreCase(statusname) )
+            String randomstatusname = announcementstatus.get(i).getText();
+            if(randomstatusname.equalsIgnoreCase(statusname) )
             {
                 listofannououcementdata(i);
             }
@@ -177,7 +173,7 @@ public class createannouncementpage {
 			listofannouncement.get(index/2).click();
     }
     
-}
+
 		
 		
 			
@@ -212,7 +208,39 @@ public class createannouncementpage {
 //		
 //	}
 		
-	
+
+    public void clickondeletebutton()
+    {
+    	deletebutton.click();
+    }
+    
+   public void deleteannouncementpopup()
+   {
+	   deletepopupyesbutton.click();
+   }
+    
+   public void getdeleteconfirmationmessage()
+   {
+	  String deletemessage = deleteconfirmationmessage.getText();
+	  System.out.println(" Delete announcement confirmation message :"+deletemessage); 
+	  
+	  Assert.assertEquals(deletemessage, "Announcement deleted successfully.");
+   }
+   
+   
+   // --------------------------- update announcement methods ---------------------
+   
+   public void clickonupdatebutton()
+   {
+	   updatebutton.click();
+   }
+   
+   public String getupdateconfirmationmessage()
+   {
+	  return updateconfirmationmessage.getText();  
+   }
+   
+}
 	
 
 

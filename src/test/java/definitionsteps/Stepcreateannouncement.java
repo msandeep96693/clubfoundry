@@ -1,5 +1,7 @@
 package definitionsteps;
 
+import org.junit.Assert;
+
 import Basicflow.Baseclass;
 import PageObject.createannouncementpage;
 import io.cucumber.java.en.*;
@@ -50,38 +52,45 @@ public class Stepcreateannouncement extends Baseclass {
 	public void successfully_announcement_is_created() {
 	    System.out.println("successfully announcement is created");
 	}
-	@And("validate the announcement details")
+	@And("verify the announcement details")
 	public void validate_the_announcement_details() throws InterruptedException {
 	   createannoucement.validateannouncementdetailspage();
 	}
 	
 	// -------------------------------- delete announcement -----------------------------------
 	
-	@And("Ensure the announcement status in a list")
-	public void validate_the_announcement_status_in_a_list() {
-	   createannoucement.announcementstatusinalist();
-	}
 	
 	@And("select and click any announcement from list")
 	public void select_and_click_any_announcement_from_list() throws InterruptedException {
-	   createannoucement.Ensureannouncementstatusinalist("On-going", "Not Started");  // "Ongoing", "Not started"
-	}
-	
-	@And("Ensure the annoucement details page")
-	public void ensure_the_annoucement_details_page() {
-	    
+	   createannoucement.Ensureannouncementstatusinalist(" Completed");  // "On-going", "Not Started" 
 	}
 	
 	@When("click on delete icon")
 	public void click_on_delete_icon() {
-	    
+	    createannoucement.clickondeletebutton();
 	}
 	
-	@And("Ensure admin redirected to announcement home page")
-	public void ensure_admin_redirected_to_announcement_home_page() {
-	   
+	@When("click yes button on delete popup")
+	public void click_on_yes_button_on_delete_popup() {
+	    createannoucement.deleteannouncementpopup();
 	}
 	
+	@When("verify announcement successfully deleted with confirmation message")
+	public void verify_announcement_successfully_deleted_with_confirmation_message() {
+		createannoucement.getdeleteconfirmationmessage();
+		
+	}
+
 	
+	// ------------------------- update announcement --------------------------------
 	
+	@When("click on edit icon")
+	public void click_on_edit_icon() {
+	   createannoucement.clickonupdatebutton();
+	}
+	
+	@When("verify announcement successfully updated with confirmation message")
+	public void verify_announcement_updated_successfully_with_confirmation_message() {
+	   Assert.assertEquals(createannoucement.getupdateconfirmationmessage(), "Announcement updated successfully.");
+	}
 }

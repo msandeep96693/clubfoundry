@@ -4,7 +4,6 @@ Feature: Delete announcement
     Given should navigate to the login page
     When enter url as "https://tfc.tech-active.com/sign-in"
     And enter the valid email address "admin@foundry.com"
-    And enter the valid email address "admin@foundry.com"
     And enter the valid password "1234"
     And click on remember me check box
     And click on sign in button
@@ -14,11 +13,10 @@ Feature: Delete announcement
 
   Scenario: admin delete a announcement
   
-		And Ensure the announcement status in a list
 		And select and click any announcement from list
-		#And Ensure the annoucement details page
-	#	When click on delete icon
-		#And Ensure admin redirected to announcement home page
+		When click on delete icon
+		And click yes button on delete popup
+		And verify announcement successfully deleted with confirmation message
 		   
   #	When click on my profile icon in dashboard
   #  And admin validate the user email id

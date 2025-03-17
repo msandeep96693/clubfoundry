@@ -13,9 +13,8 @@ Feature: announcement updation
 
   Scenario: admin udpate a announcement
   
-		And Ensure the announcement status in a list
+		
 		And select and click any announcement from list
-		And Ensure the annoucement details page
 		When click on edit icon
 		And enter announcement name into textfield
 		And select a announcement date from calender
@@ -23,9 +22,9 @@ Feature: announcement updation
 		And enter a link into the textfield
 		And enter a announcement details into textarea
 		When click on create button1
-		And successfully announcement is created
-		And validate the announcement details
-		And Ensure admin redirected to announcement home page
+		And verify announcement successfully updated with confirmation message
+		And verify the announcement details
+		
 		   
   	When click on my profile icon in dashboard
     And admin validate the user email id
