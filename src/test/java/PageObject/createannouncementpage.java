@@ -1,7 +1,9 @@
 package PageObject;
 
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -44,6 +46,8 @@ public class createannouncementpage {
 	@FindBy(xpath = "(//button)[7]") private WebElement deletebutton;
 	@FindBy(xpath = "//span[.='Yes']/..") private WebElement deletepopupyesbutton;
 	@FindBy(xpath = "//div[text()='Announcement deleted successfully.']") private WebElement deleteconfirmationmessage;
+	
+	@FindBy(xpath = "//div[@class='ng-star-inserted']//div/div/div") private List<WebElement> listofannoouncementdata;
 	
 	// update announcement xpath
 	
@@ -153,61 +157,29 @@ public class createannouncementpage {
 	
 	// -----------------delete announcement ---------------------------
 	
-	public void Ensureannouncementstatusinalist(String statusname) throws InterruptedException  
+	public void Ensureannouncementstatusinalist() throws InterruptedException  
 	{
-		for(int i = 0; i<announcementstatus.size(); i++)
-        {
-            String randomstatusname = announcementstatus.get(i).getText();
-            if(randomstatusname.equalsIgnoreCase(statusname) )
-            {
-                listofannououcementdata(i);
-            }
-            
-        }
-    }
-    
-    public void listofannououcementdata(int index) throws InterruptedException
-    {
-       
-            
-			listofannouncement.get(index/2).click();
-    }
-    
+		int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
 
-		
-		
-			
-//			if(ongoingstatus.getText().equalsIgnoreCase(ongoing))
-//			{
-//				System.out.println("Ongoing name :"+ ongoingstatus.getText());
-//				for(int i = 0; i<ongoingstatusannouncementlist.size(); i++)
-//				{
-//					String ongoingstatusname = ongoingstatusannouncementlist.get(i).getText();
-//					System.out.println("ongoing status names :"+ ongoingstatusname);
-//					ongoingstatusannouncementlist.get(i).click();
-//					break;
-//				}
-//				
-//				
-//			} else if (notstartedstatus.getText().equalsIgnoreCase(notstarted))
-//				{
-//				System.out.println("notstarted name :"+ notstartedstatus.getText());
-//				for(int i = 0; i<notstartedstatusannouncementlist.size(); i++)
-//				{
-//					String notstartedstatusname = notstartedstatusannouncementlist.get(i).getText();
-//					System.out.println("not started status names :"+ notstartedstatusname);
-//					notstartedstatusannouncementlist.get(i).click();
-//					break;
-//				}
-//			} else {
-//				
-//				System.out.println("Donot required completed status list ");
-//			}
-//			
-//		
-//		
-//	}
-		
+	            // Iterate through the selected indices and print the addresses
+	            for (int index : targetIndices)
+	            {
+	                if (index < listofannoouncementdata.size()) 
+	                { // Ensure the index is within the list range
+	                    System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
+	                    if(listofannoouncementdata.get(index).getText().contains("Not Started"))
+	                    {
+	                    	Thread.sleep(3000);
+	                    	String sendingdata = listofannoouncementdata.get(index).getText();
+	                    	System.out.println("sending data :-"+sendingdata);
+	                    	listofannoouncementdata.get(index).click();
+	                    	break;
+	                    }
+                    
+	                }	 
+	            }
+		}
+	
 
     public void clickondeletebutton()
     {

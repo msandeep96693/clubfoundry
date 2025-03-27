@@ -62,7 +62,7 @@ public class Stepcreateannouncement extends Baseclass {
 	
 	@And("select and click any announcement from list")
 	public void select_and_click_any_announcement_from_list() throws InterruptedException {
-	   createannoucement.Ensureannouncementstatusinalist(" Completed");  // "On-going", "Not Started" 
+	   createannoucement.Ensureannouncementstatusinalist();  // "On-going", "Not Started"  " Completed"
 	}
 	
 	@When("click on delete icon")
