@@ -3,7 +3,9 @@ package PageObject;
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -12,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.Elementutil;
 
@@ -43,11 +47,15 @@ public class createannouncementpage {
 	
 	// delete announcement xpath
 	
-	@FindBy(xpath = "(//button)[7]") private WebElement deletebutton;
+	@FindBy(xpath = "(((//div[.=' Announcement Details ']/../../../following-sibling::div/div)[1]/div)[2]/div/button)[2]/svg-icon") private WebElement deletebutton;
+	@FindBy(xpath = "(((//div[.=' Announcement Details ']/../../../following-sibling::div/div)[1]/div)[2]/div//button)[2]") private WebElement completeddeletebutton;
+	@FindBy(xpath = "((//div[.=' Announcement Details ']/../../../following-sibling::div/div)[1]/div)[2]/div") private List<WebElement> ongoingnotstartedcomponent;
+	
 	@FindBy(xpath = "//span[.='Yes']/..") private WebElement deletepopupyesbutton;
 	@FindBy(xpath = "//div[text()='Announcement deleted successfully.']") private WebElement deleteconfirmationmessage;
 	
 	@FindBy(xpath = "//div[@class='ng-star-inserted']//div/div/div") private List<WebElement> listofannoouncementdata;
+	
 	
 	// update announcement xpath
 	
@@ -157,7 +165,7 @@ public class createannouncementpage {
 	
 	// -----------------delete announcement ---------------------------
 	
-	public void Ensureannouncementstatusinalist() throws InterruptedException  
+	public void Ensureannouncementstatusinalist(String statusname) throws InterruptedException  
 	{
 		int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
 
@@ -167,23 +175,51 @@ public class createannouncementpage {
 	                if (index < listofannoouncementdata.size()) 
 	                { // Ensure the index is within the list range
 	                    System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
-	                    if(listofannoouncementdata.get(index).getText().contains("Not Started"))
+	                    Thread.sleep(2000);
+	                    if(listofannoouncementdata.get(index).getText().contains(statusname)) // "Not Started"
 	                    {
-	                    	Thread.sleep(3000);
+//	                    	Thread.sleep(3000);
 	                    	String sendingdata = listofannoouncementdata.get(index).getText();
 	                    	System.out.println("sending data :-"+sendingdata);
 	                    	listofannoouncementdata.get(index).click();
 	                    	break;
 	                    }
-                    
-	                }	 
+	                }
 	            }
-		}
+	}
 	
 
-    public void clickondeletebutton()
+    public void clickondeletebutton() throws InterruptedException
     {
-    	deletebutton.click();
+    	int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
+
+        // Iterate through the selected indices and print the addresses
+        for (int index : targetIndices)
+        {
+            if (index < listofannoouncementdata.size()) 
+            { // Ensure the index is within the list range
+                System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
+                Thread.sleep(2000);
+                if(listofannoouncementdata.get(index).getText().contains("On-going")) // "Not Started"
+                {
+                	deletebutton.click();
+                	break;
+                } else if(listofannoouncementdata.get(index).getText().contains("Not Started"))
+                {
+                	deletebutton.click();
+                	break;
+                } else if(listofannoouncementdata.get(index).getText().contains("Completed"))
+                {
+                	completeddeletebutton.click();
+                	break;
+                }
+            }
+        }
+
+//    	completeddeletebutton.click();
+//    	deletebutton.click();
+    	
+    	
     }
     
    public void deleteannouncementpopup()

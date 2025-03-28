@@ -14,12 +14,12 @@ Feature: Delete announcement
   Scenario: admin delete a announcement
   
 		And select and click any announcement from list
-#		When click on delete icon
+		When click on delete icon
 #		And click yes button on delete popup
 #		And verify announcement successfully deleted with confirmation message
-		   
+#		   
   #	When click on my profile icon in dashboard
-  #  And admin validate the user email id
-  #  And click on signout button
-  #  Then admin verify the sign in page
-   # And close the browser
+    #And admin validate the user email id
+    #And click on signout button
+    #Then admin verify the sign in page
+    #And close the browser
