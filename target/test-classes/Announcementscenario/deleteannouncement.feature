@@ -13,7 +13,7 @@ Feature: Delete announcement
 
   Scenario: admin delete a announcement
   
-		And select and click any announcement from list
+		And select and click any announcement from list and delete announcement
 		When click on delete icon
 #		And click yes button on delete popup
 #		And verify announcement successfully deleted with confirmation message

@@ -167,61 +167,40 @@ public class createannouncementpage {
 	
 	public void Ensureannouncementstatusinalist(String statusname) throws InterruptedException  
 	{
+		String sendingdata = null;
 		int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
 
 	            // Iterate through the selected indices and print the addresses
 	            for (int index : targetIndices)
 	            {
-	                if (index < listofannoouncementdata.size()) 
+	                if (index < listofannoouncementdata.size())
 	                { // Ensure the index is within the list range
-	                    System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
+//	                    System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
 	                    Thread.sleep(2000);
 	                    if(listofannoouncementdata.get(index).getText().contains(statusname)) // "Not Started"
 	                    {
 //	                    	Thread.sleep(3000);
-	                    	String sendingdata = listofannoouncementdata.get(index).getText();
+	                    	sendingdata = listofannoouncementdata.get(index).getText();
 	                    	System.out.println("sending data :-"+sendingdata);
 	                    	listofannoouncementdata.get(index).click();
-	                    	break;
+	                    	break;	
 	                    }
 	                }
 	            }
+	            
+	            // delete button functionality 
+	            if(sendingdata.contains("On-going")) 
+	            {
+            		deletebutton.click();
+            	} else if (sendingdata.contains("Not Started"))
+            	{
+            		deletebutton.click();
+            	} else if (sendingdata.contains("Completed")) {
+            		completeddeletebutton.click();
+            		
+            	}
 	}
 	
-
-    public void clickondeletebutton() throws InterruptedException
-    {
-    	int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
-
-        // Iterate through the selected indices and print the addresses
-        for (int index : targetIndices)
-        {
-            if (index < listofannoouncementdata.size()) 
-            { // Ensure the index is within the list range
-                System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
-                Thread.sleep(2000);
-                if(listofannoouncementdata.get(index).getText().contains("On-going")) // "Not Started"
-                {
-                	deletebutton.click();
-                	break;
-                } else if(listofannoouncementdata.get(index).getText().contains("Not Started"))
-                {
-                	deletebutton.click();
-                	break;
-                } else if(listofannoouncementdata.get(index).getText().contains("Completed"))
-                {
-                	completeddeletebutton.click();
-                	break;
-                }
-            }
-        }
-
-//    	completeddeletebutton.click();
-//    	deletebutton.click();
-    	
-    	
-    }
-    
    public void deleteannouncementpopup()
    {
 	   deletepopupyesbutton.click();
