@@ -217,6 +217,30 @@ public class createannouncementpage {
    
    // --------------------------- update announcement methods ---------------------
    
+   public void selectandclickanyannouncementlist(String statusname) throws InterruptedException
+   {
+	   int[] targetIndices = {2, 6, 10}; // 2nd, 6th, and 10th (Zero-based index)
+
+       // Iterate through the selected indices and print the addresses
+       for (int index : targetIndices)
+       {
+           if (index < listofannoouncementdata.size())
+           { // Ensure the index is within the list range
+//               System.out.println("Address " + (index + 1) + ": " + listofannoouncementdata.get(index).getText());
+               Thread.sleep(2000);
+               if(listofannoouncementdata.get(index).getText().contains(statusname)) // "Not Started"
+               {
+               	String sendingdata = listofannoouncementdata.get(index).getText();
+               	System.out.println("sending data :-"+sendingdata);
+               	listofannoouncementdata.get(index).click();
+               	break;	
+               }
+           }
+       }
+   }
+   
+   
+   
    public void clickonupdatebutton()
    {
 	   updatebutton.click();

@@ -21,7 +21,7 @@ Feature: announcement updation
 		And upload a image
 		And enter a link into the textfield
 		And enter a announcement details into textarea
-		When click on create button1
+		When click on update button
 		And verify announcement successfully updated with confirmation message
 		And verify the announcement details
 		

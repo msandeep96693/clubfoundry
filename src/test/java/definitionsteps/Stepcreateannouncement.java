@@ -21,23 +21,28 @@ public class Stepcreateannouncement extends Baseclass {
 	public void click_on_announcement_button() {
 	   createannoucement.clickonaddannouncemnticon();
 	}
+	
 	@And("enter announcement name into textfield")
 	public void enter_announcement_name_into_textfield() {
-	    createannoucement.Enterdataintotextfield("Title", "Create automation announcement 1", null, null, null);
+	    createannoucement.Enterdataintotextfield("Title", "Create automation announcement", null, null, null);
 	}
+	
 	@And("select a announcement date from calender")
 	public void select_a_announcement_date_from_calender() throws InterruptedException {
-		createannoucement.selectdatefromcalender("7");
+		createannoucement.selectdatefromcalender("10");
 	}
+	
 	@And("upload a image")
 	public void upload_a_image() {
 	    System.out.println("upload an image : Add an image");
 	}
+	
 	@And("enter a link into the textfield")
 	public void enter_a_link_into_the_textfield() {
 	    createannoucement.Enterdataintotextfield("Link 1", null, "https://www.announcement.com", null, null);
 	    createannoucement.Enterdataintotextfield("Link 2", null, null, "https://www.announcement.com", null);
 	}
+	
 	@And("enter a announcement details into textarea")
 	public void enter_a_announcement_details_into_textarea() {
 	   createannoucement.Enterdataintotextfield("Details", null, null, null, "create automation announcement 1");
@@ -65,12 +70,6 @@ public class Stepcreateannouncement extends Baseclass {
 	   createannoucement.Ensureannouncementstatusinalist("Completed");  // "On-going", "Not Started"  "Completed"
 	}
 	
-	@When("click on delete icon")
-	public void click_on_delete_icon() throws InterruptedException {
-//	    createannoucement.clickondeletebutton();
-		System.out.println("-----------------------------------------");
-	}
-	
 	@When("click yes button on delete popup")
 	public void click_on_yes_button_on_delete_popup() {
 	    createannoucement.deleteannouncementpopup();
@@ -85,10 +84,25 @@ public class Stepcreateannouncement extends Baseclass {
 	
 	// ------------------------- update announcement --------------------------------
 	
+	@And("select and click any announcement from list")
+	public void select_and_click_any_announcement_from_list() throws InterruptedException {
+	   createannoucement.selectandclickanyannouncementlist("On-going");  // "On-going", "Not Started" 
+	}
+	
+	
+	
 	@When("click on edit icon")
 	public void click_on_edit_icon() {
 	   createannoucement.clickonupdatebutton();
 	}
+	
+	@When("click on update button")
+	public void click_on_update_button() {
+	    
+	}
+	
+	
+	
 	
 	@When("verify announcement successfully updated with confirmation message")
 	public void verify_announcement_updated_successfully_with_confirmation_message() {
