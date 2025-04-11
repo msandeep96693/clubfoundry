@@ -1,4 +1,4 @@
-Feature: create miniclub functionality
+Feature: update miniclub functionality
 
   Background:
     Given should navigate to the login page
@@ -10,11 +10,11 @@ Feature: create miniclub functionality
     And admin successfully logged into the application
     Then admin validate the dashboard
 
-  Scenario: create miniclub
+  Scenario: update miniclub
   
 		And click on mini club from left navigation bar
 		And validate the mini club list page
-		And click on mini club button
+		And click on edit icon from mini club list
 		And enter club name into the textfield
 		And select access level option
 		And select the profile picture
@@ -23,9 +23,9 @@ Feature: create miniclub functionality
 		And select the moderator
 		And select the members
 		And enter club details into the textarea
-		And click on create button
-		Then successfully mini club is created
-		Then validate the mini club details
+		And click on update mini club button
+		Then successfully mini club is updated
+		
 		   
     When click on my profile icon in dashboard
     And admin validate the user email id

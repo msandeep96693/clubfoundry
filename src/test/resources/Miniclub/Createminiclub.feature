@@ -1,4 +1,4 @@
-Feature: crete miniclub functionality
+Feature: create miniclub functionality
 
   Background:
     Given should navigate to the login page

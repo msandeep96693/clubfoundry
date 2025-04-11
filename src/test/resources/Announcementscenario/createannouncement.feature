@@ -19,9 +19,9 @@ Feature: crete announcement functionality
 		And upload a image
 		And enter a link into the textfield
 		And enter a announcement details into textarea
-		#When click on create button1
-		#And successfully announcement is created
-		#And verify the announcement details
+		When click on create button1
+		And successfully announcement is created
+		And verify the announcement details
 			   
   	When click on my profile icon in dashboard
     And admin validate the user email id

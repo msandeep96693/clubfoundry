@@ -62,16 +62,6 @@ public class createannouncementpage {
 	@FindBy(xpath = "(//button)[6]") private WebElement updatebutton;
 	@FindBy(xpath = "//div[text()='Announcement updated successfully.']") private WebElement updateconfirmationmessage;
 	
-	
-	@FindBy(xpath = "//span[.=' Completed']/..") private List<WebElement> completdstatusannouncementlist;
-	@FindBy(xpath = "//span[.='Not Started']") private WebElement completedstatus;
-	
-	@FindBy(xpath = "//span[.='On-going']/..") private List<WebElement> ongoingstatusannouncementlist;
-	@FindBy(xpath = "//span[.='On-going']") private WebElement ongoingstatus;
-	
-	@FindBy(xpath = "//span[.='Not Started']/..") private List<WebElement> notstartedstatusannouncementlist;
-	@FindBy(xpath = "//span[.='Not Started']") private WebElement notstartedstatus;
-	
 	@FindBy(xpath = "//div[@class='flex flex-auto items-center gap-2 sm:gap-6']//span[2]") private List<WebElement> announcementstatus;	
 	
 	@FindBy(xpath = "(//div[.='Announcements']/../../following-sibling::div)[1]/div/div/div/div/div[1]") private List<WebElement> listofannouncement;
@@ -115,21 +105,25 @@ public class createannouncementpage {
 			String labelnames = validationlabelname.getText();
 //			System.out.println("List of Labelnames :"+ labelnames);
 			
-			switch (labelnames) {
+			switch (labelnames) 
+			{
 			case "Title":
 				if (announcementname != null) {
+					enterannouncementname.clear();
 					enterannouncementname.sendKeys(announcementname);
 				}
 				break;
 
 			case "Link 1":
 				if (link1data != null) {
+					enterlinkdataintotextfield1.clear();
 					enterlinkdataintotextfield1.sendKeys(link1data);
 				}
 				break;
 
 			case "Link 2":
 				if (link2data != null) {
+					enterlinkdataintotextfield2.clear();
 					enterlinkdataintotextfield2.sendKeys(link2data);
 
 				}
@@ -137,11 +131,11 @@ public class createannouncementpage {
 
 			case "Details":
 				if (detailsdata != null) {
+					enterdescriptiontextarea.clear();
 					enterdescriptiontextarea.sendKeys(detailsdata);
 				}
 				break;
-
-		}
+			}
 		}
 	}
 	

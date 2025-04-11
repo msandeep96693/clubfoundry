@@ -7,9 +7,10 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions( features = {
-//							"src/test/resources/Announcementscenario/updateannouncement.feature"
-							"src/test/resources/Announcementscenario/createannouncement.feature"
-//							 "src/test/resources/Announcementscenario/deleteannouncement.feature"       
+							
+							"src/test/resources/Announcementscenario/createannouncement.feature",
+							"src/test/resources/Announcementscenario/updateannouncement.feature",
+							 "src/test/resources/Announcementscenario/deleteannouncement.feature"       
 				},
  				glue = {"definitionsteps" },
  				dryRun = false,
@@ -18,17 +19,13 @@ import io.cucumber.junit.CucumberOptions;
  				plugin = {  "pretty",
  							"html:target/cucumber-reports/CucumberReport.html",
 					        "json:target/cucumber-reports/CucumberReport.json",
- 						    "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
-						}
+					        "junit:target/cucumber-reports/CucumberReport.junit",
+					        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+ 						    }
 	        	)
 
 public class AnnouncementRunner {
 
 }
  
-/* 
- * "src/test/resources/Announcementscenario/createannouncement.feature",
-							"src/test/resources/Announcementscenario/updateannouncement.feature",
-							"src/test/resources/Announcementscenario/deleteannouncement.feature"
- *  
- *  */
+

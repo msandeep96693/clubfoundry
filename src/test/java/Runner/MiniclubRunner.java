@@ -6,7 +6,10 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions( features = { "src/test/resources/Miniclub/Createminiclub.feature" },
+@CucumberOptions( features = { 
+//								"src/test/resources/Miniclub/Createminiclub.feature",
+								"src/test/resources/Miniclub/updateminiclub.feature"
+								},
  				glue = {"definitionsteps" },
  				dryRun = true,
 // 				dryRun true will not execute

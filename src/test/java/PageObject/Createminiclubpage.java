@@ -46,9 +46,20 @@ public class Createminiclubpage {
 	@FindBy(xpath = "//textarea[@formcontrolname='description']") private WebElement clubdescription;
 	@FindBy(xpath = "(//span[.='Create'])[2]") private WebElement createbutton;
 	
-//	@FindBy(xpath = "(((//div[.='Club Details']/../../..//following-sibling::div)[2]/div)[1]/div/div/div)[2]") private List<WebElement> newlycreatedclubdetails;
-	
 	@FindBy(xpath = "(((//div[.='Club Details']/../../..//following-sibling::div)[2]/div)[1]/div/div/div)[2]/div/div") private List<WebElement> newlycreatedclubdetails;
+	
+	
+	// update xpath
+	
+	@FindBy(xpath = "(//button)[7]") private WebElement miniclubupdatebutton;
+	@FindBy(xpath = "//span[text()='Update']/../..") private WebElement updatebuttoninminiclubpage;
+	@FindBy(xpath = "//div[contains(text(),'The mini club has')]") private WebElement updateminiclubresponsemessage;
+	
+	// delete xpath
+	
+	@FindBy(xpath = "//button[@mattooltip='Delete']") private WebElement deleteminiclub;
+	@FindBy(xpath = "//span[.='Yes']") private WebElement yesdeletebutton;
+	
 	
 	
 	String miniclubname = " Mini Clubs ";
@@ -167,4 +178,51 @@ public class Createminiclubpage {
 			System.out.println("Club Details :"+ clubdetails);
 		}
 	}
+	
+	/* ------------------- update mini club ------------------------------------*/
+	
+	public void clickonediticononclublist()
+	{
+		if(miniclubupdatebutton.isDisplayed() || miniclubupdatebutton.isSelected())
+		{
+			miniclubupdatebutton.click();
+		}
+	}
+	
+	public void clickonupdatebuttonineditminiclubpage()
+	{
+		if(updatebuttoninminiclubpage.isEnabled() || updatebuttoninminiclubpage.isDisplayed())
+		{
+			updatebuttoninminiclubpage.click();
+		}
+	}
+	
+	public String updateminiclubconfirmationmessage()
+	{
+		return updateminiclubresponsemessage.getText();
+	}	
+	
+	
+	/*----------------- Delete mini club -------------------------------*/
+	
+	public void miniclubdeletion()
+	{
+		if(deleteminiclub.isDisplayed() || deleteminiclub.isEnabled())
+		{
+			deleteminiclub.click();
+		}
+	}
+	
+	public void clickonyesbutton()
+	{
+		if(yesdeletebutton.isDisplayed() || yesdeletebutton.isEnabled())
+		{
+			yesdeletebutton.click();
+		}	
+	}
+	
+	
+	
+	
+	
 }

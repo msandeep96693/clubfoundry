@@ -29,7 +29,7 @@ public class Stepcreateannouncement extends Baseclass {
 	
 	@And("select a announcement date from calender")
 	public void select_a_announcement_date_from_calender() throws InterruptedException {
-		createannoucement.selectdatefromcalender("10");
+		createannoucement.selectdatefromcalender("11");
 	}
 	
 	@And("upload a image")
@@ -89,20 +89,21 @@ public class Stepcreateannouncement extends Baseclass {
 	   createannoucement.selectandclickanyannouncementlist("On-going");  // "On-going", "Not Started" 
 	}
 	
-	
-	
 	@When("click on edit icon")
 	public void click_on_edit_icon() {
 	   createannoucement.clickonupdatebutton();
 	}
 	
-	@When("click on update button")
-	public void click_on_update_button() {
-	    
+	
+	@When("update announcement date from calender")
+	public void update_announcement_date_from_calender() {
+	   createannoucement.selectdatefromcalender("15");
 	}
 	
-	
-	
+	@When("click on update button")
+	public void click_on_update_button() {
+	    createannoucement.clickonupdatebutton();
+	}
 	
 	@When("verify announcement successfully updated with confirmation message")
 	public void verify_announcement_updated_successfully_with_confirmation_message() {

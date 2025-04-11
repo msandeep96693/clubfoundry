@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="42.893" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="announcement updation" name="admin udpate a announcement" time="42.678">
+<system-out><![CDATA[
+Given should navigate to the login page.....................................passed
+When enter url as "https://tfc.tech-active.com/sign-in".....................passed
+And enter the valid email address "admin@foundry.com".......................passed
+And enter the valid password "1234".........................................passed
+And click on remember me check box..........................................passed
+And click on sign in button.................................................passed
+And admin successfully logged into the application..........................passed
+Then admin validate the dashboard...........................................passed
+When click on announcement from left navigation.............................passed
+And select and click any announcement from list.............................passed
+When click on edit icon.....................................................passed
+And enter announcement name into textfield..................................passed
+And update announcement date from calender..................................passed
+And upload a image..........................................................passed
+And enter a link into the textfield.........................................passed
+And enter a announcement details into textarea..............................passed
+When click on my profile icon in dashboard..................................passed
+And admin validate the user email id........................................passed
+And click on signout button.................................................passed
+Then admin verify the sign in page..........................................passed
+And close the browser.......................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

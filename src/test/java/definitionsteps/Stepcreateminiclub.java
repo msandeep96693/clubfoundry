@@ -2,6 +2,8 @@ package definitionsteps;
 
 import java.awt.AWTException;
 
+import org.testng.Assert;
+
 import Basicflow.Baseclass;
 import PageObject.Createminiclubpage;
 import io.cucumber.java.en.*;
@@ -74,5 +76,22 @@ public class Stepcreateminiclub extends Baseclass {
 	@Then("validate the mini club details")
 	public void validate_the_mini_club_details() {
 	    createminiclub.miniclubdetailsvalidation();
+	}
+	
+	/* ------------------ update mini club -------------------*/
+	
+	@And("click on edit icon from mini club list")
+	public void click_on_edit_icon_from_mini_club_list() {
+	   
+	}
+	
+	@And("click on update mini club button")
+	public void click_on_update_mini_club_button() {
+	   
+	}
+	
+	@Then("successfully mini club is updated")
+	public void successfully_mini_club_is_updated() {
+	   Assert.assertEquals(createminiclub.updateminiclubconfirmationmessage(), "The mini club has been updated successfully.");
 	}
 }
